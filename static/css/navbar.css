@@ -1,0 +1,10 @@
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-family: 'Play', sans-serif;
+}
+
+.navbar{
+    background: rgb(52,58,64);
+    background: linear-gradient(34deg, rgba(52,58,64,1) 2%, rgba(52,58,64,1) 100%);
+}

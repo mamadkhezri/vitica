@@ -1,0 +1,283 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,500&family=Josefin+Sans&family=Play&family=Poppins:ital,wght@0,400;0,700;1,300&family=Roboto&family=Roboto+Condensed&family=Rubik+Pixels&family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{% static 'css/index_two.css' %}" rel="stylesheet">
+    <title>Virtual Time Capsules</title>
+</head>
+<body>
+{% include 'inc/navbar.html' %}
+    <header class="bg-dark text-white text-center py-5">
+        <div class="container">
+            <h1 class="wel">Welcome to Virtual Time Capsules</h1>
+            <p class="wel lead">Preserving memories for the future, powered by blockchain.</p>
+            <div class="d-flex justify-content-center">
+                <img src="{% static 'svg/organic-organism-svgrepo-com.svg' %}" alt="registration" width="150px" height="150px">
+            </div>
+            <a href="" class=" wel btn btn-primary">Create Your Time Capsule</a>
+        </div>
+    </header>
+
+    <section class="container my-5">
+        <h2 class=" ho text-center mb-4">How It Works?</h2>
+        <div class="row mt-3">
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="{% static 'svg/monitor-svgrepo-com.svg' %}" alt="registration" width="150px" height="150px">
+                    </div>
+                    <h4 class="cre">Create an Account</h4>
+                    <p class="cre">Sign up and connect your blockchain wallet to get started.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="{% static 'svg/time-svgrepo-com.svg' %}" alt="registration" width="150px" height="150px">
+                    </div>
+                    <h4 class="cre">Create a Time Capsule</h4>
+                    <p class="cre">Add content, set a release date, and lock it on the blockchain.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <img src="{% static 'svg/secure-box-svgrepo-com.svg' %}" alt="registration" width="150px" height="150px">
+                    </div>
+                    <h4 class="cre">Secure and Unbreakable</h4>
+                    <p class="cre">Thanks to blockchain technology, your capsule is tamper-proof.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container my-5">
+        <h1 class="mb-4 text-center">Virtual Time Capsule Steps</h1>
+
+        <!-- Carousel for Steps -->
+        <div id="step-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner text-center">
+
+                <!-- Step 1 -->
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-one-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 1">
+                            <h5 class="car mt-3">Create a Time Capsule</h5>
+                            <p class="car mt-3">Users sign in to their accounts or create new ones on your platform. They initiate the creation of a time capsule, providing necessary details like title, description, and choosing the opening date.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-two-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 2" >
+                            <h5 class="car mt-3">Uploading Contents</h5>
+                            <p class="car mt-3">Users can upload various types of content such as text messages, images, videos, documents, etc., that they wish to include in the capsule.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-three-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 3">
+                            <h5 class="car mt-3">Locking the Capsule in Blockchain</h5>
+                            <p class="car mt-3">At this point, your platform generates a unique identifier (NFT) for this time capsule. A smart contract is then deployed on the Ethereum blockchain, which holds the details of the time capsule (NFT ID, opening date, contents, etc.).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-four-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 4">
+                            <h5 class="car mt-3">Securing the Capsule</h5>
+                            <p class="car mt-3">The smart contract enforces the time lock. It ensures that the capsule cannot be accessed until the specified date arrives.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-five-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 5">
+                            <h5 class="car mt-3">Storage on Blockchain</h5>
+                            <p class="car mt-3">The contents of the time capsule, along with the details, are securely stored on the Ethereum blockchain. This provides tamper-proof and immutable storage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-six-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 6">
+                            <h5 class="car mt-3">Confirmation and Receipt</h5>
+                            <p class="car mt-3">Users receive a confirmation along with the unique NFT identifier for their time capsule. This serves as proof of ownership.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-seven-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 7">
+                            <h5 class="car mt-3">Monitoring and Editing</h5>
+                            <p class="car mt-3">Users can log in to their accounts to view, edit, or monitor the status of their capsules. They can also receive notifications as the chosen release date approaches.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-eight-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 8">
+                            <h5 class="car mt-3">Unlocking on Opening Date</h5>
+                            <p class="car mt-3">When the chosen date arrives, the smart contract automatically executes, allowing the user to access the contents of their time capsule.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 9 -->
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 step-card mx-3">
+                            <img src="{% static 'svg/number-square-nine-duotone-svgrepo-com.svg'%}" height="100px" width="100px" alt="Step 9">
+                            <h5 class="car mt-3">Optional: Sale of Capsules</h5>
+                            <p class="car mt-3">Users have the option to make their capsules available for sale. They can set a price or choose to offer it for free.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#step-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#step-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <section class="bg-dark py-5">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <img src="{% static 'svg/explore-svgrepo-com.svg'%}" alt="registration" width="150px" height="150px">
+            </div>
+            <h2 class="explore text-center mb-4">Explore Time Capsules</h2>
+            <p class="explore text-center">Discover capsules created by others and witness their stories.</p>
+            <div class="text-center">
+                <a href="" class="wel btn btn-primary">Browse Capsules</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container my-5">
+            <h1 class="mb-4 text-center"><img class="mb-3" src="{% static 'svg/fire-svgrepo-com.svg'%}" width="60px" height="60px">Frequently Asked Questions</h1>
+            
+            <!-- FAQ Accordion -->
+            <div class="accordion" id="faqAccordion">
+                <!-- Question 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            What is a time capsule?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            A time capsule is a container or repository that is filled with meaningful items, messages, or memorabilia and is intended to be opened at a specific future date or event. It allows individuals to preserve moments in time and share them with future generations.
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Question 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How does the time capsule platform work?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            The time capsule platform allows users to create virtual time capsules. Users can provide information, upload content, and choose a future date or event for the capsule to be unlocked. Once created, the capsule is securely stored on the blockchain and will be accessible on the chosen release date.
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Question 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            How do I access my time capsule in the future?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You will receive a notification on the chosen release date or event. Simply log in to your account, go to your capsules, and you will be able to access and view the contents of your time capsule.
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Question 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Can I edit or add more content to a time capsule after creating it?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, you can edit a time capsule as long as it has not yet been unlocked. Simply go to your account, find the capsule you want to edit, and click on the "Edit" option. You can add more content or make changes as needed.
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Question 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Is my information and content secure?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, your information and content are securely stored using blockchain technology. This ensures that the contents of your time capsule remain tamper-proof and authentic over time.
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Add more questions and answers as needed -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 bg-dark">
+        <p class="text-white">&copy; 2023 Virtual Time Capsules. All rights reserved.</p>
+    </footer>
+    
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

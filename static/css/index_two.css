@@ -1,0 +1,19 @@
+body{
+    font-family: 'Play', sans-serif;
+}
+
+
+.explore{
+    color: white;
+    font-weight: 100;
+}
+
+.carousel-control-next-icon {
+    background-color: black;
+    border-radius: 30px;
+}
+
+.carousel-control-prev-icon{
+    background-color: black;
+    border-radius: 30px;
+}

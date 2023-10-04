@@ -1,0 +1,42 @@
+body {
+    background: linear-gradient(135deg, #FF6F61, #7ed0ec);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.ho{
+  color: black;
+  font-weight: bold;
+  font-family: 'Play', sans-serif;
+}
+
+.cre{
+  color: white;
+  font-weight: bold;
+  font-family: 'Play', sans-serif;
+}
+
+.explore{
+  color: #FF6F61 ;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Play', sans-serif;
+  background-image: linear-gradient(to right, #FF6F61,  #7ed0ec); /* Define your gradient here */
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.wel{
+  font-family: 'Play', sans-serif;
+  font-weight: bold;
+}
+
+.car{
+  font-family: 'Play', sans-serif;
+  color: white;
+  font-weight: bold;
+}
+
+
