@@ -89,4 +89,10 @@ class UserLoginView(View):
             else:
                 messages.error(request, 'email or password is incorrect.')
         return render(request, self.template_name, {'form': form})
+    
+
+class UserLogoutView(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        return redirect('home:home')
 		    

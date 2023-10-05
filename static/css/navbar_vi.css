@@ -8,3 +8,11 @@
     background: rgb(52,58,64);
     background: linear-gradient(34deg, rgba(52,58,64,1) 2%, rgba(52,58,64,1) 100%);
 }
+
+.custom-nav {
+    margin-left:150px ;
+}
+
+.custom-na {
+    margin-left: 750px;
+}
