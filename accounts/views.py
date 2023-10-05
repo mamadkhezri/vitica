@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.views import View
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserLoginForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -53,8 +53,40 @@ class UserRegisterView(View):
                 password=user_registration_info['password']
             )
 
-            # TODO : NEDDS TO MODIFY
-            return redirect('home/index_two.html')
+            return redirect('accounts:login')
 
+        return render(request, self.template_name, {'form': form})
+    
+
+class UserLoginView(View):
+    form_class = UserLoginForm
+    template_name = 'accounts/loginvi.html'
+    success_url = 'home:home'
+
+    def setup(self, request, *args, **kwargs):
+        self.next= request.GET.get('next', None)
+        return super().setup(request, *args, **kwargs)
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(self.success_url)
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, email=cd['email'], password=cd['password'])
+            if user is not None:
+                login(request, user)
+                if self.next:
+                    return redirect(self.next)
+                return redirect(self.success_url)
+            else:
+                messages.error(request, 'email or password is incorrect.')
         return render(request, self.template_name, {'form': form})
 		    

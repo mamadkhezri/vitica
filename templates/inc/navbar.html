@@ -9,9 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,500&family=Josefin+Sans&family=Play&family=Poppins:ital,wght@0,400;0,700;1,300&family=Roboto&family=Roboto+Condensed&family=Rubik+Pixels&family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/navbar.css">
-    <script src="js/connect_wallet.js"></script>
-
+    <link rel="stylesheet" href="{% static 'css/navbar_vi.css' %}">
     <title>Navbar</title>
 </head>
 <body>
@@ -33,22 +31,19 @@
                         <a class="nav-link" href="create_capsule.html">Create Time Capsule</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="browse_capsules.html">Browse Capsules</a>
+                        <a class="nav-link" href="">Browse Capsules</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="browse_capsules.html">Connect Wallet</a>
+                        <a class="nav-link" href="">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
+                        <a class="nav-link" href="">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
+                        <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:user_register' %}">Sign Up</a>
+                        <a class="nav-link" href="{% url 'accounts:register' %}">Sign Up</a>
                     </li>
                 </ul>
                 <button id="connectWalletButton">Connect Wallet</button>
