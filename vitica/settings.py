@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'home',
+    'capsules',
+    'multiupload',
+    'taggit',
 ]
 
 MIDDLEWARE = [

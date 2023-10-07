@@ -1,0 +1,61 @@
+body{
+    font-family: 'Play', sans-serif;
+}
+
+.profile-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-name {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.profile-role {
+    text-align: center;
+    color: #555;
+    margin-top: 5px;
+}
+
+.follow-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.logout-button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    color: rgb(255, 0, 0);
+
+}
+
+.about-section {
+    margin-top: 20px;
+    border-top: 2px solid #ccc;
+    padding-top: 20px;
+}
+
+.post-card {
+    margin-bottom: 20px;
+}
+
+
+.viewde{
+    text-decoration: none;
+}
