@@ -47,7 +47,7 @@ class PostcreateView(LoginRequiredMixin, View):
                 for sound_file in Sound_files:
                     Sound.objects.create(TimeCapsule=new_capsule, sound=sound_file)
                 for document_file in Sound_files:
-                    Sound.objects.create(TimeCapsule=new_capsule, document=document_file)
+                    Document.objects.create(TimeCapsule=new_capsule, document=document_file)
                 
             except Exception as e:
                 print("Error during file creation:", e)
@@ -64,24 +64,24 @@ class PostDetailView(View):
     form_class_reply = CommentReplyForm
 
     def get(self, request, cap_id, cap_slug):
-        timecapsule_instance = get_object_or_404(TimeCapsule, pk=cap_id, slug=cap_slug)
-        comments = timecapsule_instance.post_comments.filter(is_reply=False)
+        time_capsule_instance = get_object_or_404(TimeCapsule, pk=cap_id, slug=cap_slug)
+        comments = time_capsule_instance.time_capsule_comments().filter(is_reply=False)
         can_like = False
-        if request.user.is_authenticated and timecapsule_instance.user_can_like(request.user):
+        if request.user.is_authenticated and time_capsule_instance.user_can_like(request.user):
             can_like = True
 
         can_unlike = False
-        if request.user.is_authenticated and vote.objects.filter(creator=request.user, TimeCapsule=timecapsule_instance).exists():
+        if request.user.is_authenticated and vote.objects.filter(creator=request.user, time_capsule=time_capsule_instance).exists():
             can_unlike = True
 
         form = self.form_class()
         reply_form = self.form_class_reply()
 
-        likes_count = vote.objects.filter(post=timecapsule_instance).count()
-        tags = timecapsule_instance.tags.all()
+        likes_count = vote.objects.filter(time_capsule=time_capsule_instance).count()
+        tags = time_capsule_instance.tags.all()
 
         return render(request, 'capsules/detail.html', {
-            'timecapsule': timecapsule_instance,
+            'timecapsule': time_capsule_instance,
             'comments': comments,
             'form': form,
             'reply_form': reply_form,
@@ -105,7 +105,7 @@ class PostDetailView(View):
 
             form = self.form_class()
         
-        comments = timecapsule_instance.timecapsule_comments.filter(is_reply=False)
+        comments = timecapsule_instance.time_capsule_comments.filter(is_reply=False)
         reply_form = self.form_class_reply()
 
         return render(request, 'capsules/detail.html', {
@@ -115,3 +115,25 @@ class PostDetailView(View):
             'reply_form': reply_form,
             
         })
+    
+class LikePostView(LoginRequiredMixin, View):
+    def get(self, request, timecapsule_id):
+        timecapsule = get_object_or_404(TimeCapsule, id=timecapsule_id)
+        like, created = vote.objects.get_or_create(creator=request.user, timecapsule=timecapsule)
+        if not created:
+            like.delete()
+        return redirect('capsules:post_detail', timecapsule.id, timecapsule.slug)
+    
+class UnlikePostView(LoginRequiredMixin, View):
+    def unlike_post(self, request, timecapsule):
+        try:
+            existing_like = vote.objects.get(creator=request.user, timecapsule=timecapsule)
+            existing_like.delete()
+        except vote.DoesNotExist:
+            pass
+    def get(self, request, timecapsule_id):
+        post = get_object_or_404(TimeCapsule, id=timecapsule_id)
+        if request.method == "GET" and request.user.is_authenticated:
+            self.unlike_post(request, post)
+            return redirect('posts:post_detail', timecapsule_id=timecapsule_id, timecapsule_slug=TimeCapsule.slug)
+        return redirect('posts:post_detail', timecapsule_id=timecapsule_id, timecapsule_slug=TimeCapsule.slug)

@@ -15,12 +15,13 @@ class PostUpdateCreateForm(forms.ModelForm):
     
     class Meta:
         model = TimeCapsule
-        fields = ('photo', 'video', 'sound','document', 'title', 'message_related', 'tags')
+        fields = ('photo', 'video', 'sound','document', 'title', 'message_related', 'publication_date' ,'tags')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Title'}),
             'message_related': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter Message'}),
-            'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter tags'})
+            'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter tags'}),
+            'publication_date': forms.SelectDateWidget(attrs={'class':'form-control', 'placeholder':'Enter the date the capsule was opened'}),
         }
 
     def save(self, commit=True):

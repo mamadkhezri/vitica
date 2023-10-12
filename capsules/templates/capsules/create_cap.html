@@ -43,7 +43,7 @@
                 <div class="card">
                     <div class="card-header banner">Fill out the form</div>
                     <div class="card-body mt-3">
-                        <form method="post" action="{% url 'capsules:capsules_create' %}">
+                        <form enctype="multipart/form-data" method="post" action="{% url 'capsules:capsules_create' %}">
                             {{ form.as_p }}
                             {% csrf_token %}
                             <button type="submit" class="btn btn-primary">Submit</button>
