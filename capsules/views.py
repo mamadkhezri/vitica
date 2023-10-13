@@ -15,7 +15,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-# Create your views here.
 
 class PostcreateView(LoginRequiredMixin, View):
     form_class = PostUpdateCreateForm
@@ -27,6 +26,7 @@ class PostcreateView(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        print(request.user)
 
         if form.is_valid():
             new_capsule = form.save(commit=False)
@@ -41,13 +41,13 @@ class PostcreateView(LoginRequiredMixin, View):
 
             try:
                 for photo_file in Photo_files:
-                    Photo.objects.create(TimeCapsule=new_capsule, photo=photo_file)
+                    Photo.objects.create(time_capsule=new_capsule, photo=photo_file)
                 for video_file in video_files:
-                    Video.objects.create(TimeCapsule=new_capsule, video=video_file)
+                    Video.objects.create(time_capsule=new_capsule, video=video_file)
                 for sound_file in Sound_files:
-                    Sound.objects.create(TimeCapsule=new_capsule, sound=sound_file)
-                for document_file in Sound_files:
-                    Document.objects.create(TimeCapsule=new_capsule, document=document_file)
+                    Sound.objects.create(time_capsule=new_capsule, sound=sound_file)
+                for document_file in document_file:
+                    Document.objects.create(time_capsule=new_capsule, document=document_file)
                 
             except Exception as e:
                 print("Error during file creation:", e)

@@ -4,11 +4,52 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from taggit.managers import TaggableManager
 from django.utils.text import slugify
+from django.utils import timezone
+
+
+class Photo(models.Model):
+    time_capsule = models.ForeignKey('TimeCapsule', on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='blog/', null=True, blank=True, default='static\img\lock.png')
+
+    def __str__(self):
+        return self.photo.name
+
+class Sound(models.Model):
+    time_capsule = models.ForeignKey('TimeCapsule', on_delete=models.CASCADE)
+    sound = models.FileField(upload_to='blog/', null=True, blank=True)  # This field stores the sound file
+
+    def __str__(self):
+        return self.sound.name
+
+class Video(models.Model):
+    time_capsule = models.ForeignKey('TimeCapsule', on_delete=models.CASCADE)
+    video = models.FileField(upload_to='blog/', null=True, blank=True)  # This field stores the video file
+
+    def __str__(self):
+        return self.video.name
+
+class Message(models.Model):
+    time_capsule = models.ForeignKey('TimeCapsule', on_delete=models.CASCADE)
+    message = models.TextField()
+
+    def __str__(self):
+        return f"Message in {self.time_capsule.title}"
+
+class Document(models.Model):
+    time_capsule = models.ForeignKey('TimeCapsule', on_delete=models.CASCADE)
+    document = models.FileField(upload_to='blog/', null=True, blank=True)  # This field stores the document file
+
+    def __str__(self):
+        return self.document.name   
 
 class TimeCapsule(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=255)
     message_related = models.TextField()
+    photos = models.ManyToManyField(Photo, related_name='capsules_photo', blank=True)
+    videos = models.ManyToManyField(Video, related_name='capsules_video', blank=True)
+    sounds = models.ManyToManyField(Sound, related_name='capsules_sound', blank=True)
+    documents = models.ManyToManyField(Document, related_name='capsules_document', blank=True)
     publication_date = models.DateField()
     slug = models.SlugField()
     created_date = models.DateTimeField(auto_now_add=True)
@@ -37,40 +78,7 @@ class TimeCapsule(models.Model):
     def time_capsule_comments(self):
         return Comment.objects.filter(time_capsule=self)
 
-class Photo(models.Model):
-    time_capsule = models.ForeignKey(TimeCapsule, on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='blog/')  # This field stores the photo file
 
-    def __str__(self):
-        return self.photo.name
-
-class Sound(models.Model):
-    time_capsule = models.ForeignKey(TimeCapsule, on_delete=models.CASCADE)
-    sound = models.FileField(upload_to='blog/')  # This field stores the sound file
-
-    def __str__(self):
-        return self.sound.name
-
-class Video(models.Model):
-    time_capsule = models.ForeignKey(TimeCapsule, on_delete=models.CASCADE)
-    video = models.FileField(upload_to='blog/')  # This field stores the video file
-
-    def __str__(self):
-        return self.video.name
-
-class Message(models.Model):
-    time_capsule = models.ForeignKey(TimeCapsule, on_delete=models.CASCADE)
-    message = models.TextField()
-
-    def __str__(self):
-        return f"Message in {self.time_capsule.title}"
-
-class Document(models.Model):
-    time_capsule = models.ForeignKey(TimeCapsule, on_delete=models.CASCADE)
-    document = models.FileField(upload_to='blog/')  # This field stores the document file
-
-    def __str__(self):
-        return self.document.name   
 
 class vote(models.Model):
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='uvotes')
