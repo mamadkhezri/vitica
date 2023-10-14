@@ -42,6 +42,8 @@ class UserRegisterView(View):
         if form.is_valid():
             user_registration_info = {
                 'email': form.cleaned_data['email'],
+                'username':form.cleaned_data['username'],
+                'phone_number':form.cleaned_data['phone_number'],
                 'full_name': form.cleaned_data['full_name'],
                 'password': form.cleaned_data['password1'],  # Use 'password1' field
             }
@@ -49,6 +51,8 @@ class UserRegisterView(View):
             # Create a new User instance using your custom user manager
             user = User.objects.create_user(
                 email=user_registration_info['email'],
+                username=user_registration_info['username'],
+                phone_number=user_registration_info['phone_number'],
                 full_name=user_registration_info['full_name'],
                 password=user_registration_info['password']
             )

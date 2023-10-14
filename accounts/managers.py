@@ -1,7 +1,7 @@
 from django.contrib.auth.models import BaseUserManager
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, full_name, password):
+    def create_user(self, email, username,phone_number, full_name, password):
         if not email:
             raise ValueError("The Email field must be set")
         if not full_name:
@@ -10,6 +10,8 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(
             email=email,
+            username=username,
+            phone_number=phone_number,
             full_name=full_name,
             
         )

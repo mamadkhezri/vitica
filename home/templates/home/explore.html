@@ -35,11 +35,15 @@
                 {% for time_capsule in time_capsules %}
                 <div class="col-md-4">
                     <div class="post">
-                        {% if time_capsule.photo_files.all %}
-                            <img src="{{  time_capsule.photo_files.first.photo.url }}" alt="Post 1">
-                        {% endif %}
+                    {% if time_capsule.photo_files.all %}
+                            <img src="{{ time_capsule.photo_files.first.photo.url }}" alt="photo">
+                    {% else %}
+                        <p>No photos found for this time capsule.</p>
+                    {% endif %}
                         <div class="post-content">
-                            <h2 class="post-title"> {{ time_capsule.title }} </h2>
+                            {% for time_capsule in time_capsules %}
+                                <h2 class="post-title"><a href="">{{ time_capsule.title }}</a> </h2>
+                            {% endfor %}
                             <p class="post-description"> {{ time_capsule.message_related|truncatewords:8 }} </p>
                             <div class="post-details">
                                 <span class="post-username">hamas</span>
