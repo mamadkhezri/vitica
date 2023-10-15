@@ -19,9 +19,9 @@
             <div class="card-header d-flex align-items-center">
                 <img class="profilepic mt-5" src="img/aaa.jpg" width="50px" height="50px">
                 <div>
-                    <h3 class="card-title mt-2 ms-1">Time Capsule Title</h3>
-                    <a class="mt-5 ms-2 username" href="">@kevin100<a class="ms-2 fw-bold" href="">Subscribe</a></a>
-                    <p class="card-subtitle mb-2 ms-2">Opening Date: September 30, 2023</p>
+                    <h3 class="card-title mt-2 ms-1"> {{time_capsule.title}} </h3>
+                    <a class="mt-5 ms-2 username" href="">{{ time_capsule.creator.username }}<a class="ms-2 fw-bold" href="">Subscribe</a></a>
+                    <p class="card-subtitle mb-2 ms-2">Opening Date: {{ time_capsule.publication_date|date:"F j, Y" }}</p>
                 </div>
             </div>
         <div>
@@ -32,13 +32,13 @@
                 
         </div>
             <div class="card-body">
-                <p class="card-text mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. At hic omnis aperiam porro obcaecati. Odit porro rerum consequuntur pariatur, voluptate rem cum error quasi soluta, veritatis ad vero eveniet. Aliquid.<br>
-                Description of the time capsule. This is where you can provide detailed information about the content and purpose of the time capsule. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam cum, officiis reprehenderit laudantium, tenetur eum aperiam totam beatae ad qui laborum voluptates obcaecati! Tenetur, dicta architecto. Est unde deleniti quae.</p>
+                <p class="card-text mt-2"> {{ time_capsule.message_related }} </p>
     
                 <!-- Content Section (Add more as needed) -->
-                <h5 class="mt-4">Contents:</h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><img class="img" src="img/triangles-1430105_1280.png"></li>
+                    {% for photo_file in time_capsule.photo_files.all %}
+                        <li class="list-group-item"><img class="img" src="{{ photo_file.photo.url }}"></li>
+                    {% endfor %}
                     <li class="list-group-item"><video width="752" height="240" controls>
                         <source src="video/video.mp4" type="video/mp4">
                         <source src="movie.ogg" type="video/ogg">

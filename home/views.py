@@ -18,10 +18,10 @@ class ExploreView(View):
     form_class = CapsuleSearchForm
 
     def get(self, request):
-        time_capsule = TimeCapsule.objects.all() 
+        time_capsules = TimeCapsule.objects.all() 
         form = self.form_class(request.GET)  
         if form.is_valid() and form.cleaned_data['search']:
             search_query = form.cleaned_data['search']
-            time_capsule = time_capsule.filter(title__contains=search_query)
+            time_capsules = time_capsules.filter(title__contains=search_query)
 
-        return render(request, 'home/explore.html', {'time_capsules': time_capsule, 'form': form})
+        return render(request, 'home/explore.html', {'time_capsules': time_capsules, 'form': form})

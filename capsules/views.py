@@ -81,7 +81,7 @@ class PostDetailView(View):
         tags = time_capsule_instance.tags.all()
 
         return render(request, 'capsules/detail.html', {
-            'timecapsule': time_capsule_instance,
+            'time_capsule': time_capsule_instance,
             'comments': comments,
             'form': form,
             'reply_form': reply_form,
@@ -93,23 +93,23 @@ class PostDetailView(View):
 
     @method_decorator(login_required)
     def post(self, request, cap_id, cap_slug):
-        timecapsule_instance = get_object_or_404(TimeCapsule, pk=cap_id, slug=cap_slug)
+        time_capsule_instance = get_object_or_404(TimeCapsule, pk=cap_id, slug=cap_slug)
         form = self.form_class(request.POST)
         if form.is_valid():
             new_comment = form.save(commit=False)
             new_comment.creator = request.user
-            new_comment.timecapsule = timecapsule_instance
+            new_comment.time_capsule = time_capsule_instance
             new_comment.save()
             messages.success(request, 'Your comment has been submitted successfully.', extra_tags='success')
             
 
             form = self.form_class()
         
-        comments = timecapsule_instance.time_capsule_comments.filter(is_reply=False)
+        comments = time_capsule_instance.time_capsule_comments.filter(is_reply=False)
         reply_form = self.form_class_reply()
 
         return render(request, 'capsules/detail.html', {
-            'post': timecapsule_instance,
+            'time_capsule': time_capsule_instance,
             'comments': comments,
             'form': form,
             'reply_form': reply_form,

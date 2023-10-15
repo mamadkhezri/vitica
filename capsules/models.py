@@ -68,7 +68,7 @@ class TimeCapsule(models.Model):
     def get_absolute_url(self):
         print("PK:", self.pk)
         print("Slug:", self.slug)
-        url = reverse('capsules:capsule_detail', args=[str(self.pk), self.slug])
+        url = reverse('capsules:capsules_detail', args=[str(self.pk), self.slug])
         print("Generated URL:", url)
         return url
     
